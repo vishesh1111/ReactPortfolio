@@ -1,0 +1,146 @@
+.heading {
+  font-size: 56px;
+  font-weight: 700;
+  margin-top: 50px;
+  text-align: center;
+}
+.span {
+  letter-spacing: 2px;
+  padding: 0 5px;
+  background: linear-gradient(to bottom, transparent 50%, #fff5b7 50%);
+  font-family: "poppins";
+}
+
+.experince-card-div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 1rem 1rem;
+  gap: 1rem 1rem 1rem;
+  margin-top: -1px;
+}
+
+.experience-card {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  backdrop-filter: blur(1rem);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  transition: 0.5s ease;
+}
+
+.experience-card:hover {
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.experience-blured-div {
+  position: absolute;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  height: 11rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.experience-banner {
+  background: #444941;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 150%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  border-radius: 10px 10px 0 0;
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0);
+  height: 11rem;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.logo-svg {
+  height: 2.75rem;
+  width: 7rem;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.experience-div-company {
+  position: absolute;
+  background: transparent;
+  height: 9rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.experience-img {
+  position: absolute;
+  object-fit: cover;
+  left: 0;
+  right: 0;
+  top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 6rem;
+  height: 6rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.experience-text-details {
+  padding: 1.5em;
+  margin-top: 2rem;
+}
+
+.experience-text-role {
+  text-align: center;
+  color: #000;
+  font-weight: 400;
+  font-size: 25px;
+  margin: 0;
+  padding-top: 1.5rem;
+  line-height: normal;
+}
+
+.experience-text-date {
+  text-align: center;
+  color: #000;
+  font-size: 20px;
+  margin: 0;
+  padding-top: 1rem;
+  font-weight: 400;
+}
+
+.experience-text-desc {
+  text-align: center;
+  font-family: "poppins";
+}
+
+.svg {
+  font-size: 24px;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  font-family: "poppins";
+  font-weight: 700;
+}

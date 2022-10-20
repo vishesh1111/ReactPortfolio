@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import Experience from "../src/components/Experience/Experience";
+import IntroSection from "./components/introSection/IntroSection";
+import Skills from "../src/components/Skills/Skills";
+import Projects from "../src/components/Projects/Projects";
+import Header1 from "./components/Header/Header";
+import Socials from "../src/components/Socials/Socials";
+import Button from "../src/components/Button/Button"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <Header1 />
+        <IntroSection />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Socials />
+        <Button />
+      </>
     </div>
   );
 }

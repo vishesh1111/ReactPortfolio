@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  justify-content: center;
+  font-family: "poppins";
+}
+.container img {
+  max-width: 550px;
+}
+
+.h3 {
+  font-family: "poppins";
+}
+
+.column-2 {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  backdrop-filter: blur(1rem);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 80px;
+  margin-inline: 60px;
+  margin-right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.column-2 h2 {
+  font-weight: 550;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-2 h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #444444;
+  font-weight: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.dev-icons ul {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-content: center;
+  gap: 0.5px;
+  column-fill: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.pink {
+  padding: 0 5px;
+  background: linear-gradient(to bottom, transparent 50%, #ff6db7 50%);
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500px;
+}
+
+.react {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.react:hover {
+  color: #645beb;
+}
+
+.css:hover {
+  color: #645beb;
+}
+.javascript:hover {
+  color: #adff2f;
+}
+
+.linux:hover {
+  color: #454545;
+}
+
+.Vue:hover {
+  color: #90ee90;
+}
+
+.git:hover {
+  color: #ff726f;
+}
+
+.database:hover {
+  color: #00008b;
+}
+
+.thunder {
+  height: 1.5em;
+  width: 1.5em;
+  margin: 64px 6.05em -28px -1.9em;
+  vertical-align: -0.1em;
+}
+
+.lines {
+  color: #444444;
+  font-size: 20px;
+}

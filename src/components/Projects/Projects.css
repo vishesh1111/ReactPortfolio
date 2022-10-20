@@ -1,0 +1,86 @@
+.projects {
+  display: "flex";
+  flex-direction: column;
+  justify-items: flex-start;
+  opacity: 38;
+  box-sizing: border-box;
+}
+
+.head {
+  font-size: 56px;
+  font-family: "poppins";
+  font-weight: 700;
+  margin-top: 50px;
+  margin-left: 190px;
+}
+.cyan {
+  letter-spacing: 2px;
+  padding: 0 5px;
+  background: linear-gradient(to bottom, transparent 50%, #00ead3 50%);
+}
+.projects-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1rem;
+  margin-top: 25px;
+}
+.repo-card {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  backdrop-filter: blur(1rem);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  transition: 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.repo-card:hover {
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.subproject {
+  display: flex;
+}
+
+.dot {
+  display: inline-block;
+  width: 14px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: rgba(221, 224, 41);
+  top: 18px;
+  position: relative;
+  margin-left: 12px;
+}
+
+.dot2 {
+  display: inline-block;
+  width: 14px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #563d7c;
+  top: 18px;
+  position: relative;
+  margin-left: 12px;
+}
+
+.svg {
+  margin-top: 12px;
+}
+
+.starsvg {
+  display: flex;
+  margin-top: -27px;
+  margin-left: 84px;
+}
+
+.svg1 {
+  margin-left: 18px;
+  margin-bottom: -22px;
+  margin-top: 18px;
+}
