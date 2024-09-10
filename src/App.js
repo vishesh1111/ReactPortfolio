@@ -1,6 +1,5 @@
 import React from "react";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
-
 import IntroSection from "./components/introSection/IntroSection";
 import Skills from "../src/components/Skills/Skills";
 import Projects from "../src/components/Projects/Projects";
@@ -15,7 +14,6 @@ function App() {
         <Header1 />
         <IntroSection />
         <Skills />
-        
         <Projects />
         <Socials />
         <Button />
