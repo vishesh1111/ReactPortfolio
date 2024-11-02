@@ -5,7 +5,8 @@ import Skills from "../src/components/Skills/Skills";
 import Projects from "../src/components/Projects/Projects";
 import Header1 from "./components/Header/Header";
 import Socials from "../src/components/Socials/Socials";
-import Button from "../src/components/Button/Button"
+import Button from "../src/components/Button/Button";
+import Experience from "../src/components/Experience/Experience"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Projects />
         <Socials />
         <Button />
+        <Experience />
       </>
     </div>
   );
