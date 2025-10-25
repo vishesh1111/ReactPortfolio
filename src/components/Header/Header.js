@@ -1,13 +1,10 @@
-import React from "react";
-import { flexbox } from "@chakra-ui/react";
-import { display } from "@mui/system";
+import React, { useState } from "react";
 import "./Header.css";
 import toast, { Toaster } from "react-hot-toast";
 
 const darkToast = (username) => {
   toast("Welcome!! ", {
     icon: "👏",
-
     style: {
       borderRadius: "10px",
       background: "#333",
@@ -18,6 +15,16 @@ const darkToast = (username) => {
 };
 
 const Header1 = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <div>
@@ -26,25 +33,37 @@ const Header1 = () => {
             Vishesh
           </a>
           <Toaster />
-          <nav>
+          
+          {/* Hamburger Menu Button */}
+          <button 
+            className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav className={isMenuOpen ? 'active' : ''}>
             <ul>
               <li>
-                <a href="#top" className="home">
+                <a href="#top" className="home" onClick={closeMenu}>
                   Home
                 </a>
               </li>
               <li>
-                <a href="#introsection" className="Aboutme">
+                <a href="#introsection" className="Aboutme" onClick={closeMenu}>
                   About me
                 </a>
               </li>
               <li>
-                <a href="#skills" className="skills">
+                <a href="#skills" className="skills" onClick={closeMenu}>
                   Skills
                 </a>
               </li>
               <li>
-                <a href="#" className="contact">
+                <a href="mailto:vvishesh53@gmail.com" className="contact" onClick={closeMenu}>
                   Contact
                 </a>
               </li>

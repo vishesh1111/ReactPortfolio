@@ -1,8 +1,10 @@
+/* Header Base Styles */
 .header {
   position: fixed;
   padding: 20px 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: rgba(255, 255, 255, 0.7);
   opacity: 0.9;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
@@ -12,17 +14,18 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
-  width: 100%;
-  z-index: 90;
   width: calc(100% - 180px);
-  flex-direction: row;
+  z-index: 90;
   top: 20px;
   left: 80px;
   font-family: sans-serif;
+  transition: all 0.3s ease;
 }
 
 .header nav ul {
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .header li {
@@ -31,7 +34,7 @@
 }
 
 .header li a {
-  display: flex;
+  display: inline-block;
   text-decoration: none;
   font-weight: 500;
   color: black;
@@ -40,12 +43,13 @@
   transition: 500ms ease;
   background: hsla(0, 0%, 100%, 1);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  display: inline-block;
 }
+
 .header li a:hover {
-  box-shadow: 5px 10px 50px;
+  box-shadow: 5px 10px 50px rgba(0, 0, 0, 0.15);
   border-radius: 1.1rem;
   background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 .logo {
@@ -55,4 +59,172 @@
   font-weight: 700;
   text-decoration: none;
   font-size: 2rem;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Tablet Styles (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+  .header {
+    width: calc(100% - 100px);
+    left: 40px;
+    padding: 20px 30px;
+  }
+
+  .header li {
+    margin: 0 5px;
+  }
+
+  .header li a {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile Styles (below 768px) */
+@media screen and (max-width: 768px) {
+  .header {
+    width: calc(100% - 40px);
+    left: 20px;
+    top: 10px;
+    padding: 15px 20px;
+    border-radius: 0.8rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  /* Show hamburger menu */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide navigation by default on mobile */
+  .header nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Show navigation when active */
+  .header nav.active {
+    right: 0;
+  }
+
+  .header nav ul {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .header li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header li a {
+    display: block;
+    width: 200px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    margin: 0 auto;
+  }
+}
+
+/* Small Mobile Styles (below 480px) */
+@media screen and (max-width: 480px) {
+  .header {
+    width: calc(100% - 20px);
+    left: 10px;
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .header nav {
+    width: 80%;
+  }
+
+  .header li a {
+    width: 180px;
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}
+
+/* Extra Small Mobile (below 360px) */
+@media screen and (max-width: 360px) {
+  .header {
+    width: calc(100% - 10px);
+    left: 5px;
+    padding: 10px 12px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .header nav {
+    width: 85%;
+  }
+
+  .header li a {
+    width: 160px;
+    font-size: 0.95rem;
+  }
 }

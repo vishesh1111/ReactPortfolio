@@ -1,109 +1,149 @@
-.container {
-  display: flex;
-  justify-content: center;
-  font-family: "poppins";
-}
-.container img {
-  max-width: 550px;
-}
-
-.h3 {
-  font-family: "poppins";
-}
-
-.column-2 {
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
-  border-radius: 1rem;
-  backdrop-filter: blur(1rem);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 80px;
-  margin-inline: 60px;
-  margin-right: 0px;
+.skills-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-
-.column-2 h2 {
-  font-weight: 550;
-  justify-content: center;
   align-items: center;
+  padding: 2rem 1rem;
+  font-family: "Poppins", sans-serif;
+  gap: 2rem;
+  text-align: center;
 }
 
-.column-2 h3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: #444444;
-  font-weight: 2rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* GIF Section */
+.skills-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
 }
 
-.dev-icons ul {
-  display: flex;
-  padding-left: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  align-content: center;
-  gap: 0.5px;
-  column-fill: auto;
-  margin-bottom: 0;
-  margin-top: 0;
+/* Main Content */
+.skills-content {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(0.8rem);
+  max-width: 800px;
+  text-align: center;
+}
+
+.skills-content h2 {
+  font-weight: 600;
+}
+
+.skills-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #444;
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
 }
 
 .pink {
-  padding: 0 5px;
+  font-size: 2rem;
   background: linear-gradient(to bottom, transparent 50%, #ff6db7 50%);
-  font-size: 3rem;
-  justify-content: center;
+  padding: 0 6px;
+}
+
+/* Icons Section */
+.dev-icons ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  justify-items: center;
+}
+
+.dev-icons li {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  font-weight: 500px;
+  font-weight: 500;
+  color: #333;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.react {
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-.react:hover {
-  color: #645beb;
+.dev-icons li svg {
+  font-size: 2rem;
 }
 
-.css:hover {
-  color: #645beb;
-}
-.javascript:hover {
-  color: #adff2f;
+.dev-icons li:hover {
+  transform: scale(1.1);
+  color: #ff6db7;
 }
 
-.linux:hover {
-  color: #454545;
+.dev-icons p {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
 }
 
-.Vue:hover {
-  color: #90ee90;
-}
-
-.git:hover {
-  color: #ff726f;
-}
-
-.database:hover {
-  color: #00008b;
+/* Info Section */
+.line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0.8rem 0;
 }
 
 .thunder {
-  height: 1.5em;
-  width: 1.5em;
-  margin: 64px 6.05em -28px -1.9em;
-  vertical-align: -0.1em;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
 }
 
-.lines {
-  color: #444444;
-  font-size: 20px;
+/* 📱 Phone-first layout */
+@media (max-width: 600px) {
+  .skills-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .pink {
+    font-size: 1.6rem;
+  }
+
+  .skills-title {
+    font-size: 1rem;
+  }
+
+  .dev-icons ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .line {
+    font-size: 0.95rem;
+  }
+}
+
+/* 📱 Tablet layout */
+@media (min-width: 768px) {
+  .skills-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .skills-image,
+  .skills-content {
+    flex: 1;
+  }
+
+  .skills-content {
+    padding: 2.5rem;
+  }
+
+  .skills-title {
+    text-align: left;
+  }
+
+  .dev-icons ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

@@ -1,0 +1,13 @@
+/* Minimal Experience styles - expand as needed */
+#experience {
+  background: transparent;
+  color: #111;
+}
+#experience h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+#experience p {
+  font-size: 1rem;
+  line-height: 1.4;
+}

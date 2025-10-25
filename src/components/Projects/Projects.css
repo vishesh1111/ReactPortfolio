@@ -1,86 +1,147 @@
 .projects {
-  display: "flex";
+  display: flex;
   flex-direction: column;
-  justify-items: flex-start;
-  opacity: 38;
-  box-sizing: border-box;
+  align-items: center;
+  padding: 2.5rem 1rem;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 .head {
-  font-size: 56px;
-  font-family: "poppins";
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-top: 50px;
-  margin-left: 190px;
+  margin-bottom: 2rem;
 }
+
 .cyan {
   letter-spacing: 2px;
   padding: 0 5px;
   background: linear-gradient(to bottom, transparent 50%, #00ead3 50%);
 }
-.projects-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem 1rem;
-  margin-top: 25px;
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
 }
+
+/* Tablet layout */
+@media (min-width: 600px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop layout */
+@media (min-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .repo-card {
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 1rem;
-  backdrop-filter: blur(1rem);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(0.8rem);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  transition: 0.5s ease;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .repo-card:hover {
-  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.subproject {
+.card-header {
   display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+.project-link {
+  color: #0073ff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  word-break: break-word;
+}
+
+.project-link:hover {
+  color: #004bbb;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: #222;
+  line-height: 1.5;
+  margin: 0.7rem 0 1rem;
+  text-align: justify;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .dot {
-  display: inline-block;
-  width: 14px;
-  height: 12px;
-  border-radius: 100%;
-  background-color: rgba(221, 224, 41);
-  top: 18px;
-  position: relative;
-  margin-left: 12px;
-}
-
-.dot2 {
-  display: inline-block;
-  width: 14px;
+  width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #563d7c;
-  top: 18px;
-  position: relative;
-  margin-left: 12px;
 }
 
-.svg {
-  margin-top: 12px;
+.tech {
+  font-weight: 500;
 }
 
-.starsvg {
+.stats {
   display: flex;
-  margin-top: -27px;
-  margin-left: 84px;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.svg1 {
-  margin-left: 18px;
-  margin-bottom: -22px;
-  margin-top: 18px;
+.stats p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* 📱 Mobile-first fine tuning */
+@media (max-width: 480px) {
+  .head {
+    font-size: 1.8rem;
+  }
+
+  .repo-card {
+    padding: 1rem;
+  }
+
+  .project-link {
+    font-size: 1rem;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+  }
+
+  .stats p {
+    font-size: 0.85rem;
+  }
 }
