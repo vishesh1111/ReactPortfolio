@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import toast, { Toaster } from "react-hot-toast";
 import ThemeToggle from "../ThemeToggle";
 
-
-const darkToast = (username) => {
-  toast("Welcome!! ", {
+// Function to show dark-themed toast
+const darkToast = () => {
+  toast("Welcome!!", {
     icon: "👏",
     style: {
       borderRadius: "10px",
@@ -19,6 +19,7 @@ const darkToast = (username) => {
 const Header1 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Toggle hamburger menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -27,18 +28,28 @@ const Header1 = () => {
     setIsMenuOpen(false);
   };
 
+  // Show welcome toast on page load if not already shown
+  useEffect(() => {
+    const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
+    if (!hasSeenWelcome) {
+      darkToast();
+      localStorage.setItem("hasSeenWelcome", "true"); // mark as seen
+    }
+  }, []);
+
   return (
     <>
       <div>
         <div className="header">
+          {/* Name Button (still clickable to show toast again) */}
           <button type="button" onClick={darkToast} className="logo">
             Vishesh
           </button>
           <Toaster />
-          
+
           {/* Hamburger Menu Button */}
-          <button 
-            className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
+          <button
+            className={`hamburger ${isMenuOpen ? "active" : ""}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -47,7 +58,7 @@ const Header1 = () => {
             <span></span>
           </button>
 
-          <nav className={isMenuOpen ? 'active' : ''}>
+          <nav className={isMenuOpen ? "active" : ""}>
             <ul>
               <li>
                 <a href="#top" className="home" onClick={closeMenu}>
@@ -65,7 +76,11 @@ const Header1 = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:vvishesh53@gmail.com" className="contact" onClick={closeMenu}>
+                <a
+                  href="mailto:vvishesh53@gmail.com"
+                  className="contact"
+                  onClick={closeMenu}
+                >
                   Contact
                 </a>
               </li>
