@@ -34,3 +34,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer base {
+  html {
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
+
+@layer components {
+  .dark {
+    background-color: #1a202c;
+    color: #cbd5e0;
+  }
+  
+  .dark .App {
+    background: rgba(45, 55, 72, 0.5);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .dark body {
+    background-color: #1a202c;
+    background: radial-gradient(
+      circle,
+      rgba(26, 32, 44, 1) 0%,
+      rgba(45, 55, 72, 1) 100%
+    );
+  }
+}

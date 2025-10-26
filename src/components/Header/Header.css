@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.7); /* Light theme */
   opacity: 0.9;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
   border-radius: 1rem;
@@ -37,7 +37,7 @@
   display: inline-block;
   text-decoration: none;
   font-weight: 500;
-  color: black;
+  color: black; /* Light theme */
   padding: 8px 15px;
   border-radius: 1rem;
   transition: 500ms ease;
@@ -55,7 +55,7 @@
 .logo {
   display: flex;
   flex-direction: column;
-  color: black;
+  color: black; /* Light theme */
   font-weight: 700;
   text-decoration: none;
   font-size: 2rem;
@@ -78,7 +78,7 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: black;
+  background-color: black; /* Light theme */
   border-radius: 3px;
   transition: all 0.3s ease;
 }
@@ -95,21 +95,49 @@
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Tablet Styles (768px - 1024px) */
-@media screen and (max-width: 1024px) {
+/* Dark Mode Styles */
+.dark .header {
+  background: rgba(26, 32, 44, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .header li a {
+  color: #e2e8f0;
+  background: rgba(26, 32, 44, 0.8);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark .header li a:hover {
+  background: rgba(60, 64, 78, 0.9);
+  box-shadow: 5px 10px 50px rgba(0, 0, 0, 0.3);
+}
+
+.dark .logo {
+  color: #e2e8f0;
+}
+
+.dark .hamburger span {
+  background-color: #e2e8f0;
+}
+
+/* Responsive Header Styles */
+
+/* Tablets */
+@media (max-width: 1024px) {
   .header {
-    width: calc(100% - 100px);
-    left: 40px;
-    padding: 20px 30px;
+    padding: 15px 30px;
+    width: calc(100% - 60px);
+    left: 30px;
+    top: 15px;
   }
 
-  .header li {
-    margin: 0 5px;
+  .header nav ul {
+    gap: 8px;
   }
 
   .header li a {
     padding: 6px 12px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .logo {
@@ -117,114 +145,69 @@
   }
 }
 
-/* Mobile Styles (below 768px) */
-@media screen and (max-width: 768px) {
+/* Mobile / Phones */
+@media (max-width: 768px) {
   .header {
+    padding: 10px 20px;
     width: calc(100% - 40px);
     left: 20px;
     top: 10px;
-    padding: 15px 20px;
-    border-radius: 0.8rem;
+  }
+
+  .header nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: inherit;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 80px 20px;
+    gap: 20px;
+    transition: left 0.3s ease;
+    z-index: 95;
+  }
+
+  .header nav.active {
+    left: 0;
+  }
+
+  .header nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 15px;
+    width: calc(100% - 30px);
+    left: 15px;
+    top: 8px;
   }
 
   .logo {
     font-size: 1.5rem;
   }
 
-  /* Show hamburger menu */
-  .hamburger {
-    display: flex;
-  }
-
-  /* Hide navigation by default on mobile */
-  .header nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(1rem);
-    -webkit-backdrop-filter: blur(1rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: right 0.3s ease;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Show navigation when active */
-  .header nav.active {
-    right: 0;
-  }
-
-  .header nav ul {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .header li {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-  }
-
   .header li a {
-    display: block;
-    width: 200px;
-    padding: 12px 20px;
-    font-size: 1.1rem;
-    margin: 0 auto;
-  }
-}
-
-/* Small Mobile Styles (below 480px) */
-@media screen and (max-width: 480px) {
-  .header {
-    width: calc(100% - 20px);
-    left: 10px;
-    padding: 12px 15px;
-  }
-
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  .hamburger span {
-    width: 22px;
-    height: 2.5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
   }
 
   .header nav {
     width: 80%;
-  }
-
-  .header li a {
-    width: 180px;
-    font-size: 1rem;
-    padding: 10px 15px;
-  }
-}
-
-/* Extra Small Mobile (below 360px) */
-@media screen and (max-width: 360px) {
-  .header {
-    width: calc(100% - 10px);
-    left: 5px;
-    padding: 10px 12px;
-  }
-
-  .logo {
-    font-size: 1.2rem;
-  }
-
-  .header nav {
-    width: 85%;
-  }
-
-  .header li a {
-    width: 160px;
-    font-size: 0.95rem;
+    padding: 70px 15px;
   }
 }

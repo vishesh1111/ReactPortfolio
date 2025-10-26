@@ -11,6 +11,11 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  color: #111; /* Light theme */
+}
+
+.dark .head {
+  color: #fff; /* Dark theme */
 }
 
 .cyan {
@@ -42,7 +47,7 @@
 }
 
 .repo-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15); /* Light theme */
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(0.8rem);
@@ -52,6 +57,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.dark .repo-card {
+  background: rgba(26, 32, 44, 0.8); /* Dark theme */
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .repo-card:hover {
@@ -68,11 +78,15 @@
 }
 
 .project-link {
-  color: #0073ff;
+  color: #0073ff; /* Light theme */
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
   word-break: break-word;
+}
+
+.dark .project-link {
+  color: #60a5fa; /* Dark theme */
 }
 
 .project-link:hover {
@@ -81,10 +95,14 @@
 
 .project-desc {
   font-size: 0.95rem;
-  color: #222;
+  color: #222; /* Light theme */
   line-height: 1.5;
   margin: 0.7rem 0 1rem;
   text-align: justify;
+}
+
+.dark .project-desc {
+  color: #cbd5e0; /* Dark theme */
 }
 
 .card-footer {
@@ -109,6 +127,11 @@
 
 .tech {
   font-weight: 500;
+  color: #333; /* Light theme */
+}
+
+.dark .tech {
+  color: #e2e8f0; /* Dark theme */
 }
 
 .stats {
@@ -120,7 +143,11 @@
 .stats p {
   margin: 0;
   font-size: 0.9rem;
-  color: #333;
+  color: #333; /* Light theme */
+}
+
+.dark .stats p {
+  color: #cbd5e0; /* Dark theme */
 }
 
 /* 📱 Mobile-first fine tuning */
