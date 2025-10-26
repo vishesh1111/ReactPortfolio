@@ -38,7 +38,7 @@ const projectData = [
     forks: 49,
     color: "Pink",
   },
-{
+  {
     title: "Portfolio",
     link: "https://vishesh1111.github.io/ReactPortfolio/",
     desc: "React Portfolio Made Using React & TailwindCSS.",
@@ -46,8 +46,7 @@ const projectData = [
     stars: 11,
     forks: 49,
     color: "cyan",
-  }
-  
+  },
 ];
 
 const Projects = () => {

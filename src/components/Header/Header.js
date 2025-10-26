@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Header.css";
 import toast, { Toaster } from "react-hot-toast";
+import ThemeToggle from "../ThemeToggle";
+
 
 const darkToast = (username) => {
   toast("Welcome!! ", {
@@ -29,9 +31,9 @@ const Header1 = () => {
     <>
       <div>
         <div className="header">
-          <a onClick={darkToast} className="logo">
+          <button type="button" onClick={darkToast} className="logo">
             Vishesh
-          </a>
+          </button>
           <Toaster />
           
           {/* Hamburger Menu Button */}
@@ -53,7 +55,7 @@ const Header1 = () => {
                 </a>
               </li>
               <li>
-                <a href="#introsection" className="Aboutme" onClick={closeMenu}>
+                <a href="#about" className="Aboutme" onClick={closeMenu}>
                   About me
                 </a>
               </li>
@@ -66,6 +68,9 @@ const Header1 = () => {
                 <a href="mailto:vvishesh53@gmail.com" className="contact" onClick={closeMenu}>
                   Contact
                 </a>
+              </li>
+              <li className="theme-toggle-li">
+                <ThemeToggle />
               </li>
             </ul>
           </nav>

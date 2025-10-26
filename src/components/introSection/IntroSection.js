@@ -4,7 +4,7 @@ import ballet from "../assets/ballet.png";
 
 const IntroSection = () => {
   return (
-    <div className="content">
+    <div id="introsection" className="content">
       <div className="main">
         <h2 className="heading">
           Hi all, I'm Vishesh <span className="wave">👋</span>
@@ -31,10 +31,11 @@ const IntroSection = () => {
           </a>
         </div>
       </div>
-
       <div className="img">
         <img src={ballet} alt="Illustration" />
       </div>
+      
+  {/* Education is shown on the About page only */}
     </div>
   );
 };
