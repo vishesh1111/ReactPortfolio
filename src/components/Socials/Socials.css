@@ -1,7 +1,7 @@
 .socialsites {
   position: fixed;
   top: 50%;
-  right: 75px;
+  right: 32px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -14,41 +14,49 @@
   list-style: none;
 }
 
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .socialsites li svg {
-    text-decoration: none;
-    width: 39px;
-    height: 35px;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(1rem);
-    border: 7px solid rgba(255, 255, 255, 0.25);
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 6px solid rgba(255, 255, 255, 0.5);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    margin: 7px 0;
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-
-  .socialsites li svg:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.4);
-  }
+.socialsites li svg {
+  text-decoration: none;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  box-shadow: var(--shadow-md, rgba(0,0,0,0.08) 0px 4px 16px -8px);
+  border: 1px solid var(--color-light-ash, #dadce0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: 6px 0;
+  padding: 6px;
+  transition: all 0.2s ease;
 }
 
-/* COLORS */
-.github { color: #333; }
-.linkedin { color: #0077b5; }
-.gmail { color: #f5b7b1; }
-.stackoverflow { color: #f5b041; }
-.medium { color: #85929e; }
-.coffee { color: #f9e79f; }
+.socialsites li svg:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-overflow-blue, #0085e4);
+}
 
-/* Scroll Up Button */
+/* Colors */
+.github { color: #333; }
+.leetcode { color: #f89f1b; }
+.linkedin { color: #0077b5; }
+.twitter { color: #1da1f2; }
+.gmail { color: #ea4335; }
+.stackoverflow { color: #f48024; }
+.medium { color: #4b5563; }
+.coffee { color: #fbbf24; }
+
+/* Dark mode — brighten icons */
+.dark .github { color: #e2e8f0; }
+.dark .leetcode { color: #fbbf24; }
+.dark .linkedin { color: #5bb8f5; }
+.dark .twitter { color: #60c5f7; }
+.dark .gmail { color: #f87171; }
+.dark .stackoverflow { color: #fbbf24; }
+.dark .medium { color: #cbd5e0; }
+.dark .coffee { color: #fde68a; }
+
+/* Scroll Up */
 .buttonup {
   position: fixed;
   bottom: 20px;
@@ -61,50 +69,44 @@
 
 .buttontop {
   text-decoration: none;
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(1rem);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-light-ash, #dadce0);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition: 0.5s ease;
+  transition: 0.2s ease;
 }
 
-/* DARK MODE */
+.buttontop:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-overflow-blue, #0085e4);
+}
+
+/* Dark Mode */
 .dark .socialsites li svg {
-  background: rgba(26, 32, 44, 0.4); /* lighter for dark mode */
-  border: 3px solid rgba(255, 255, 255, 0.3); /* softer border */
+  background: rgba(26,32,44,0.7);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .dark .socialsites li svg:hover {
-  background: rgba(60, 64, 78, 0.6); /* brighter hover effect */
+  background: rgba(40,44,58,0.8);
 }
 
 .dark .buttontop {
-  background: rgba(26, 32, 44, 0.5); /* lighter than before */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* softer border */
+  background: rgba(26,32,44,0.7);
+  border-color: rgba(255,255,255,0.1);
 }
 
-/* RESPONSIVENESS */
-
-/* Tablets */
+/* Responsive */
 @media (max-width: 1024px) {
-  .socialsites {
-    right: 40px;
-  }
-  .socialsites li svg {
-    width: 36px;
-    height: 33px;
-  }
+  .socialsites { right: 16px; }
+  .socialsites li svg { width: 32px; height: 32px; }
 }
 
-/* Phones */
 @media (max-width: 768px) {
   .socialsites {
     position: fixed;
@@ -115,35 +117,29 @@
     transform: none;
     flex-direction: row;
     justify-content: center;
-    gap: 8px;
-    padding: 10px 0;
-    background: rgba(255, 255, 255, 0.1);
+    gap: 4px;
+    padding: 8px 0;
+    background: rgba(250,250,252,0.9);
     backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid var(--color-light-ash, #dadce0);
+  }
+
+  .dark .socialsites {
+    background: rgba(15,15,26,0.9);
+    border-top-color: rgba(255,255,255,0.06);
   }
 
   .socialsites li svg {
-    width: 30px;
-    height: 30px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    margin: 0 4px;
+    width: 28px;
+    height: 28px;
+    margin: 0 2px;
+    padding: 4px;
   }
 
-  .buttonup {
-    bottom: 70px;
-    right: 16px;
-  }
+  .buttonup { bottom: 60px; right: 16px; }
 }
 
-/* Very small screens */
 @media (max-width: 480px) {
-  .socialsites li svg {
-    width: 26px;
-    height: 26px;
-  }
-  .buttonup {
-    bottom: 65px;
-    right: 10px;
-  }
+  .socialsites li svg { width: 24px; height: 24px; }
+  .buttonup { bottom: 55px; right: 10px; }
 }

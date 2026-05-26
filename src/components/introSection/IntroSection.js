@@ -1,6 +1,6 @@
 import React from "react";
 import "./introSection.css";
-import ballet from "../assets/ballet.png";
+import memoji from "../assets/memoji.png";
 
 const IntroSection = () => {
   return (
@@ -32,7 +32,7 @@ const IntroSection = () => {
         </div>
       </div>
       <div className="img">
-        <img src={ballet} alt="Illustration" />
+        <img src={memoji} alt="Vishesh" />
       </div>
       
   {/* Education is shown on the About page only */}

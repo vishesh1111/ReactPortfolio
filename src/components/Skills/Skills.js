@@ -1,19 +1,18 @@
 import React from "react";
-import { 
-  FaReact, FaNodeJs, FaVuejs, FaAngular, FaGitAlt, FaTools, FaSass, FaServer, FaMobile
+import {
+  FaReact, FaNodeJs, FaVuejs, FaAngular, FaTools, FaServer, FaMobile
 } from "react-icons/fa";
-import { 
-  SiJavascript, SiTypescript, SiNextdotjs, SiRedux, 
-  SiTailwindcss, SiStorybook, SiJest, SiCypress, 
-  SiWebpack, SiVite, SiFramer
+import {
+  SiJavascript, SiTypescript, SiNextdotjs, SiRedux,
+  SiTailwindcss, SiStorybook, SiFramer
 } from "react-icons/si";
 import {
   UilJavaScript,
   UilBracketsCurly,
   UilWebGrid,
-  UilLayerGroup,
   UilPadlock
 } from "@iconscout/react-unicons";
+import "./Skills.css";
 
 const Skills = () => {
   const skillCategories = [
@@ -70,21 +69,22 @@ const Skills = () => {
   const currentPath = window.location.hash;
   const isSkillsPage = currentPath === '#skills';
 
+  // Skills page — 2 column grid with cards
   if (isSkillsPage) {
     return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold mb-6">Technical Skills</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="skills-page">
+        <h1 className="skills-heading">Technical Skills</h1>
+        <div className="skills-grid">
           {skillCategories.map((category, idx) => (
-            <div key={idx}>
-              <h2 className="text-xl font-semibold mb-3">{category.title}</h2>
-              <div className="space-y-2">
+            <div key={idx} className="skill-category">
+              <h2 className="category-title">{category.title}</h2>
+              <div className="skills-list-vertical">
                 {category.skills.map((skill, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-2 border rounded hover:bg-gray-100" title={skill.desc}>
-                    <div className="text-2xl">{skill.icon}</div>
-                    <div>
-                      <h3 className="font-medium">{skill.name}</h3>
-                      <p className="text-sm text-gray-600">{skill.desc}</p>
+                  <div key={index} className="skill-card" title={skill.desc}>
+                    <div className="skill-card-icon">{skill.icon}</div>
+                    <div className="skill-card-info">
+                      <h3 className="skill-card-name">{skill.name}</h3>
+                      <p className="skill-card-desc">{skill.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -96,33 +96,27 @@ const Skills = () => {
     );
   }
 
+  // "What I Do?" inline section on homepage
   return (
-    <div className="flex flex-col md:flex-row p-6 items-center">
-      <div className="mb-6 md:mb-0 md:mr-6">
+    <div className="skills-container">
+      <div className="skills-image">
         <img
-          className="w-64 h-64 object-cover rounded-full"
           src="https://i.giphy.com/media/7wA0YhMXvDBhTckOGM/source.gif"
           alt="developer animation"
         />
       </div>
-      <div className="flex-1">
-        <h2 className="text-2xl font-bold mb-2"><span className="text-pink-500">What I Do?</span></h2>
-        <h3 className="mb-4 font-semibold">CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK</h3>
-        <div className="flex flex-wrap gap-4 mb-4">
-          {[FaReact, UilJavaScript, SiNextdotjs, SiTypescript, SiTailwindcss, FaNodeJs].map((Icon, i) => (
-            <div key={i} className="flex flex-col items-center text-xl">
-              <Icon />
-            </div>
-          ))}
+      <div className="skills-content">
+        <h2><span className="pink">What I Do?</span></h2>
+        <p className="skills-title">CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK</p>
+        <div className="dev-icons">
+          <ul>
+            {[FaReact, UilJavaScript, SiNextdotjs, SiTypescript, SiTailwindcss, FaNodeJs].map((Icon, i) => (
+              <li key={i}><Icon /></li>
+            ))}
+          </ul>
         </div>
-        <div className="space-y-2 text-gray-700">
-          <p className="flex items-center gap-2">
-            ⚡ I develop highly interactive Frontend / User Interfaces for web and mobile applications.
-          </p>
-          <p className="flex items-center gap-2">
-            ⚡ Integration of third-party services such as Firebase, AWS, and Digital Ocean.
-          </p>
-        </div>
+        <div className="line">⚡ I develop highly interactive Frontend / User Interfaces for web and mobile applications.</div>
+        <div className="line">⚡ Integration of third-party services such as Firebase, AWS, and Digital Ocean.</div>
       </div>
     </div>
   );

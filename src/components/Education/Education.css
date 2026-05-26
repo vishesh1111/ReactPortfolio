@@ -2,82 +2,74 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 32px 24px;
+  box-sizing: border-box;
 }
 
 .education-container {
   max-width: 860px;
   width: 100%;
-  background: transparent;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
+  padding: 16px;
 }
 
 .education-heading {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.25rem;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: #111; /* Light theme */
-  margin-right: auto;
+  letter-spacing: -0.2px;
+  margin-bottom: 16px;
+  color: var(--color-deep-violet, #161637);
 }
 
-.dark .education-heading {
-  color: #fff; /* Dark theme */
-}
+.dark .education-heading { color: #e2e8f0; }
 
 .education-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .education-item {
-  padding: 0.75rem 1rem;
+  padding: 16px 20px;
   border-radius: 8px;
-  background: rgba(250, 250, 250, 0.6); /* Light theme */
+  background: var(--color-cloud-gray, #f5f5f7);
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease;
 }
 
-.dark .education-item {
-  background: rgba(26, 32, 44, 0.8); /* Dark theme */
+.dark .education-item { background: rgba(26,32,44,0.8); }
+
+.education-item:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .degree {
   font-weight: 700;
-  color: #0b4a7b; /* Light theme */
+  color: var(--color-overflow-blue, #0085e4);
 }
 
-.dark .degree {
-  color: #60a5fa; /* Dark theme */
-}
+.dark .degree { color: #a78bfa; }
 
 .institution {
-  font-size: 0.95rem;
-  color: #333; /* Light theme */
-  margin-top: 0.25rem;
+  font-size: 14px;
+  color: var(--color-slate-gray, #666666);
+  margin-top: 4px;
 }
 
-.dark .institution {
-  color: #cbd5e0; /* Dark theme */
-}
+.dark .institution { color: #a0aec0; }
 
 .grade {
-  margin-top: 0.5rem;
+  margin-top: 8px;
   font-weight: 600;
-  color: #0b7a5a; /* Light theme */
+  font-size: 14px;
+  color: #059669;
 }
 
-.dark .grade {
-  color: #34d399; /* Dark theme */
-}
+.dark .grade { color: #34d399; }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
-  .education-container {
-    padding: 0.5rem;
-  }
+  .education-container { padding: 8px; }
 }

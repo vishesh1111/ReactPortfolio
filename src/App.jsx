@@ -7,9 +7,12 @@ import Socials from "./components/Socials/Socials";
 import Button from "./components/Button/Button";
 import Experience from "./components/Experience/Experience";
 import Education from "./components/Education/Education";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+import Chatbot from "./components/Chatbot/Chatbot";
 
 function App() {
   const [currentPage, setCurrentPage] = useState('main');
+  const [showCountdown, setShowCountdown] = useState(true);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -41,16 +44,22 @@ function App() {
             <Socials />
             <Button />
             <Experience />
+            <Chatbot />
           </>
         );
     }
   };
 
   return (
-    <div className="App">
-      <Header1 />
-      {renderPage()}
-    </div>
+    <>
+      {showCountdown && (
+        <LoadingScreen duration={4000} onComplete={() => setShowCountdown(false)} />
+      )}
+      <div className="App">
+        <Header1 />
+        {renderPage()}
+      </div>
+    </>
   );
 }
 
