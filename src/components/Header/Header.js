@@ -28,11 +28,12 @@ const Header1 = () => {
   };
 
   useEffect(() => {
-    const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
-    if (!hasSeenWelcome) {
+    // Header mounts only after the LoadingScreen finishes, so the toast
+    // should appear shortly after the portfolio is revealed.
+    const t = setTimeout(() => {
       darkToast();
-      localStorage.setItem("hasSeenWelcome", "true");
-    }
+    }, 500);
+    return () => clearTimeout(t);
   }, []);
 
   return (

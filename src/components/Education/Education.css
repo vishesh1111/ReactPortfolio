@@ -1,3 +1,5 @@
+/* ===== Education — token-driven, dual-theme timeline ===== */
+
 .education-section {
   width: 100%;
   display: flex;
@@ -14,62 +16,259 @@
 
 .education-heading {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: -0.2px;
-  margin-bottom: 16px;
-  color: var(--color-deep-violet, #161637);
+  letter-spacing: -0.3px;
+  margin: 0 0 24px;
+  color: var(--color-text-primary);
 }
 
-.dark .education-heading { color: #e2e8f0; }
-
-.education-list {
+/* Timeline list */
+.education-timeline {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  gap: 12px;
+  position: relative;
+}
+
+/* Vertical timeline line — opacity differs per theme via token */
+.education-timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--color-text-secondary);
+  opacity: var(--timeline-line-opacity);
+  border-radius: 2px;
 }
 
 .education-item {
-  padding: 16px 20px;
-  border-radius: 8px;
-  background: var(--color-cloud-gray, #f5f5f7);
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 20px;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Circular timeline dot — 12px, accent-colored with matching glow */
+.education-node {
+  position: absolute;
+  left: 1px;
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dot-color);
+  box-shadow: 0 0 8px var(--dot-shadow);
+  z-index: 1;
+}
+
+/* Outer wrapper = the 3px gradient border (true CSS gradient, not border-image) */
+.education-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
+  box-shadow: 0 0 20px rgba(var(--glow-rgb), 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(var(--glow-rgb), 0.28);
+}
+
+/* Inner card surface — uses theme token */
+.education-card-inner {
+  background: var(--card-bg);
+  border-radius: 13px; /* outer 16 - 3px frame */
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  transition: all 0.2s ease;
+  gap: 10px;
 }
 
-.dark .education-item { background: rgba(26,32,44,0.8); }
-
-.education-item:hover {
-  box-shadow: var(--shadow-md);
+/* Light-mode-only: very subtle accent tint on the card surface */
+html:not(.dark) .education-card-inner {
+  background:
+    linear-gradient(0deg, rgba(var(--glow-rgb), 0.04), rgba(var(--glow-rgb), 0.04)),
+    var(--card-bg);
 }
 
-.degree {
+.education-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* Icon box — translucent gradient color (works on white & dark) */
+.education-icon-box {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--glow-rgb), 0.12);
+  color: var(--grad-start);
+}
+
+.education-icon-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.education-card-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.education-degree {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 16px;
   font-weight: 700;
-  color: var(--color-overflow-blue, #0085e4);
+  letter-spacing: -0.15px;
+  color: var(--color-text-primary);
+  line-height: 1.3;
 }
 
-.dark .degree { color: #a78bfa; }
-
-.institution {
-  font-size: 14px;
-  color: var(--color-slate-gray, #666666);
+.education-institution {
   margin-top: 4px;
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
 }
 
-.dark .institution { color: #a0aec0; }
+.education-sep {
+  margin: 0 4px;
+  opacity: 0.6;
+}
 
-.grade {
-  margin-top: 8px;
+/* Grade/CGPA pill — top-right, accent-colored, monospace */
+.education-grade-pill {
+  flex-shrink: 0;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 9999px;
+  background: rgba(var(--glow-rgb), 0.14);
+  color: var(--grad-start);
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  font-size: 12.5px;
   font-weight: 600;
-  font-size: 14px;
-  color: #059669;
+  letter-spacing: 0;
+  white-space: nowrap;
+  border: 1px solid rgba(var(--glow-rgb), 0.35);
 }
 
-.dark .grade { color: #34d399; }
+/* Light-mode-only: deeper, more legible pill text per accent */
+html:not(.dark) .education-item[data-accent="green"] .education-grade-pill {
+  color: #2a7a1a;
+  background: rgba(127, 238, 100, 0.15);
+  border-color: rgba(127, 238, 100, 0.5);
+}
 
+html:not(.dark) .education-item[data-accent="orange"] .education-grade-pill {
+  color: #a33a10;
+  background: rgba(255, 107, 53, 0.12);
+  border-color: rgba(255, 107, 53, 0.4);
+}
+
+/* Responsive */
 @media (max-width: 600px) {
   .education-container { padding: 8px; }
+
+  .education-item { padding-left: 32px; }
+
+  .education-timeline::before { left: 4px; }
+  .education-node { left: -1px; top: 22px; }
+
+  .education-card-head {
+    flex-wrap: wrap;
+  }
+
+  .education-grade-pill {
+    margin-top: 2px;
+  }
+
+  .education-degree { font-size: 15px; }
+  .education-institution { font-size: 13px; }
+}
+
+/* ============================================================
+   Light-mode-only overrides — clean flat look matching Skills.
+   Dark mode rules above are untouched.
+   ============================================================ */
+
+html:not(.dark) .education-timeline::before {
+  opacity: 0.3;
+}
+
+/* Strip the gradient-border wrapper in light mode */
+html:not(.dark) .education-card {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+html:not(.dark) .education-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Inner panel becomes the card — white, 1px border, 4px left accent */
+html:not(.dark) .education-card-inner {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left-width: 4px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: none;
+  padding: 18px 20px;
+}
+
+html:not(.dark) .education-item[data-accent="green"] .education-card-inner {
+  border-left-color: #22c55e;
+}
+
+html:not(.dark) .education-item[data-accent="orange"] .education-card-inner {
+  border-left-color: #f97316;
+}
+
+/* Typography */
+html:not(.dark) .education-degree { color: #111827; }
+html:not(.dark) .education-institution { color: #6b7280; }
+
+/* Neutral icon box — the only colored elements are the left border + dot + badge */
+html:not(.dark) .education-icon-box {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Year pill (if/when used as a separate element) */
+html:not(.dark) .education-year-pill {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: none;
+}
+
+/* CGPA badge — green */
+html:not(.dark) .education-item[data-accent="green"] .education-grade-pill {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+/* Percentage badge — orange */
+html:not(.dark) .education-item[data-accent="orange"] .education-grade-pill {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fdba74;
 }

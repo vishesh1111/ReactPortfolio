@@ -1,153 +1,151 @@
-/* ===== Pure HTML/CSS Loading Screen ===== */
+/* ===== LoadingScreen — pure CSS, fully responsive ===== */
 
-.loading-screen {
+/* Optional: load SF Pro Display from Apple's public font CDN for pixel-perfect
+   parity with apple.com on non-Apple platforms. Uncomment to enable.
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://www.apple.com/wss/fonts/SF-Pro-Display/v3/SF-Pro-Display-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url("https://www.apple.com/wss/fonts/SF-Pro-Display/v3/SF-Pro-Display-Bold.woff2") format("woff2");
+}
+*/
+
+.ls-root {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 999999;
+  width: 100vw;
+  /* Use small viewport height where supported to handle the mobile URL bar */
+  height: 100vh;
+  height: 100svh;
   background: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 800ms ease;
-  opacity: 1;
-}
-
-.loading-screen--fade {
-  opacity: 0;
-}
-
-.loading-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-}
-
-.countdown {
-  font-family: monospace, 'Courier New';
-  font-weight: bold;
-  font-size: 96px;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1;
-}
-
-/* CSS 3D Cube Container */
-.cube-container {
-  width: 120px;
-  height: 120px;
-  perspective: 1000px;
-  position: relative;
-}
-
-.cube-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120px;
-  height: 120px;
-  transform: translate(-50%, -50%);
-  background: transparent;
-  filter: drop-shadow(0 0 20px #00ff44);
-  /* Fallback box shadow for stronger bloom */
-  box-shadow: 0 0 30px 10px rgba(0, 255, 68, 0.3);
-  border-radius: 50%;
-  z-index: -1;
-}
-
-.cube {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: rotateCube 4s linear infinite;
-}
-
-@keyframes rotateCube {
-  0% { transform: rotateX(-20deg) rotateY(0deg); }
-  100% { transform: rotateX(-20deg) rotateY(360deg); }
-}
-
-.face {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: rgba(0, 255, 70, 0.07);
-  border: 1px solid #00ff44;
+  overflow: hidden;
+  /* Block scroll/zoom gestures from passing through */
+  overscroll-behavior: contain;
+  touch-action: none;
+  /* Respect notch / punch-hole safe areas */
+  padding:
+    max(16px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
   box-sizing: border-box;
-  box-shadow: 0 0 8px #00ff44;
+  /* Apple system font stack — SF Pro on Apple devices, Inter elsewhere */
+  font-family:
+    -apple-system, BlinkMacSystemFont,
+    "SF Pro Display", "SF Pro Text", "SF Pro",
+    "Inter", system-ui,
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  opacity: 1;
+  transition: opacity 700ms cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: auto;
+  text-align: center;
 }
 
-.front  { transform: rotateY(0deg) translateZ(60px); }
-.back   { transform: rotateY(180deg) translateZ(60px); }
-.left   { transform: rotateY(-90deg) translateZ(60px); }
-.right  { transform: rotateY(90deg) translateZ(60px); }
-.top    { transform: rotateX(90deg) translateZ(60px); }
-.bottom { transform: rotateX(-90deg) translateZ(60px); }
-
-/* Inner Orb Wrapper to counter-rotate so it stays facing the camera somewhat */
-.orb-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  animation: counterRotateOrb 4s linear infinite;
+.ls-root.ls-fade {
+  opacity: 0;
+  pointer-events: none;
 }
 
-@keyframes counterRotateOrb {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(-360deg); }
+/* --- Phase 1: "• Hello" — apple.com headline style --- */
+.ls-hello {
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(10px, 2vw, 18px);
+  color: #aaaaaa;
+  /* 32px on tiny phones → 80px on desktop (matches apple.com hero "Hello") */
+  font-size: clamp(32px, 8.5vw, 80px);
+  font-weight: 600;          /* SF Pro Display Semibold */
+  letter-spacing: -0.025em;  /* tightened tracking like Apple's marketing copy */
+  line-height: 1;
+  user-select: none;
+  animation: ls-fadeUp 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  white-space: nowrap;
 }
 
-/* The actual pulsing radial orb */
-.orb {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 70px;
-  height: 70px;
-  margin-top: -35px;
-  margin-left: -35px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0%, #ffe000 30%, #aaff00 60%, transparent 100%);
-  filter: blur(6px);
-  animation: pulseOrb 2s ease-in-out infinite alternate;
+.ls-bullet {
+  display: none;
 }
 
-@keyframes pulseOrb {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
+.ls-hello-text {
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+/* --- Phase 2: 1..11 ---
+   Sizing scales with the *smaller* viewport dimension so the digit
+   always feels proportionally large without overflowing on either axis.
+   - 48vw   → impactful on phones in portrait
+   - 42vh   → keeps it from cropping in landscape / short windows
+   - 420px  → upper cap on huge desktop monitors
+   - 120px  → safety floor on very tiny devices */
+.ls-count {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: max(120px, min(48vw, 42vh, 420px));
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+  animation: ls-numberIn 120ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  will-change: opacity, transform;
+  /* Defensive: never let the digit push the layout */
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+@keyframes ls-fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ls-numberIn {
+  from { opacity: 0.55; transform: scale(0.985); }
+  to   { opacity: 1;    transform: scale(1); }
+}
+
+/* Landscape phones / short windows — lean harder on vh */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ls-count {
+    font-size: max(96px, min(28vw, 60vh, 320px));
   }
-  100% {
-    transform: scale(1.15);
-    opacity: 1;
+  .ls-hello {
+    font-size: clamp(24px, 5vw, 48px);
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .loading-content {
-    gap: 30px;
+/* Very small phones (≤360px wide) — guarantee a sensible floor */
+@media (max-width: 360px) {
+  .ls-count {
+    font-size: max(110px, min(56vw, 42vh, 220px));
   }
-  .cube-container {
-    transform: scale(0.7);
-  }
-  .countdown {
-    font-size: 72px;
+  .ls-hello {
+    font-size: 28px;
   }
 }
 
-@media (max-width: 480px) {
-  .loading-content {
-    gap: 15px;
-  }
-  .cube-container {
-    transform: scale(0.5);
-  }
-  .countdown {
-    font-size: 48px;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ls-root,
+  .ls-hello,
+  .ls-count {
+    animation: none !important;
+    transition: opacity 200ms linear !important;
   }
 }

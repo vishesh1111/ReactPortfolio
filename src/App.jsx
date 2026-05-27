@@ -52,13 +52,14 @@ function App() {
 
   return (
     <>
-      {showCountdown && (
-        <LoadingScreen duration={4000} onComplete={() => setShowCountdown(false)} />
+      {showCountdown ? (
+        <LoadingScreen onComplete={() => setShowCountdown(false)} />
+      ) : (
+        <div className="App">
+          <Header1 />
+          {renderPage()}
+        </div>
       )}
-      <div className="App">
-        <Header1 />
-        {renderPage()}
-      </div>
     </>
   );
 }

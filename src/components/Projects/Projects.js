@@ -47,6 +47,15 @@ const projectData = [
     forks: 49,
     color: "cyan",
   },
+  {
+    title: "USICT Pulse",
+    link: "https://usict-pulse.vercel.app/onboarding",
+    desc: "Hackathon PS1 project — campus platform with role-based Q&A, leaderboard, and Teacher/Alumni Connect, built with Next.js, Prisma, and Supabase.",
+    tech: "Next.js",
+    stars: 1,
+    forks: 0,
+    color: "#7fee64",
+  },
 ];
 
 const Projects = () => {
